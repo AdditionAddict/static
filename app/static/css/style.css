@@ -78,7 +78,7 @@ article > footer {
   border: 1px solid var(--dark-primary-color);
   color: var(--text-color);
   display: inline-block;
-  visibility: hidden;
+  //visibility: hidden;
   text-decoration: none;
   font-weight: 600;
   padding: .5rem 1rem;
