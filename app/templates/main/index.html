@@ -4,11 +4,7 @@
   <header>
     <img src="{{ url_for('static', filename='images/flasks.jpg') }}" alt="">
   </header>
-  <main>
-  
-    <section id="installBanner" class="banner">
-      <button id="installBtn">Install app</button>
-    </section>
+ 
 
     <h2>Flask PWA</h2>
     <span>A progressive webapp template</span>
@@ -16,45 +12,10 @@
       I start a new Flask project. It is constructed on
       a Model-Template-Controller perspective, which I
       find clear enough for my current projects.</p>
-  </main>
+
   <footer>
     <button id="btnAdd">Install App</button>
   </footer>
+  
 </article>
-{% endblock %}
-
-
-{% block scripts %}
-<script>
-  let deferredPrompt;
-  window.addEventListener('beforeinstallprompt', event => {
-
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    event.preventDefault();
-
-    // Stash the event so it can be triggered later.
-    deferredPrompt = event;
-
-    // Attach the install prompt to a user gesture
-    document.querySelector('#installBtn').addEventListener('click', event => {
-
-      // Show the prompt
-      deferredPrompt.prompt();
-
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-          } else {
-            console.log('User dismissed the A2HS prompt');
-          }
-          deferredPrompt = null;
-        });
-    });
-
-    // Update UI notify the user they can add to home screen
-    document.querySelector('#installBanner').style.display = 'flex';
-  });
-</script>
 {% endblock %}
